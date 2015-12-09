@@ -1,0 +1,24 @@
+name: pythonserver
+version: 1.0
+vendor: XiaoGuo, Liu <xiaoguo.liu@canonical.com>
+summary: a simple python server
+description: This is the webserver API in python demo
+icon: icon.png
+
+services:
+  mywebserver:
+    description: "A webserver in python"
+    start: bin/server 
+    caps:
+     - network-client
+     - network-service
+
+parts:
+  server:
+    plugin: python3
+    source: .
+
+  source:
+    plugin: copy
+    files:
+     ./server.py: bin/server
